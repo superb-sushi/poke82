@@ -1,21 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-shrikhand-sans: 'Shrikhand';
+  --font-league-spartan-mono: 'League Spartan';
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.font-shrikhand {
+  font-family: var(--font-shrikhand-sans);
+}
+
+.font-spartan {
+  font-family: var(--font-league-spartan-mono);
+}
+
+@theme {
+  --aspect-card: 3/4; 
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+  }
+}
+
+@layer base {
+  .font-outline-2 {
+    -webkit-text-stroke: 2px #1800AD;
+  }
+  .font-outline-4 {
+    -webkit-text-stroke: 4px #1800AD;
   }
 }
 
