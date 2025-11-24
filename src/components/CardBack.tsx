@@ -6,11 +6,14 @@ import {
 } from "@/components/ui/dialog"
 import CardFront from "@/components/CardFront"
 
+import Image from "next/image"
+import { useState } from "react";
+
 interface Member {
   role: string;
   name: string;
-  member_type: string;
-  member_nickname: string;
+  member_type: string; // Ownself
+  member_nickname: string; // Ownself
   ability: string;
   ability_desc: string;
   move_1: string;
@@ -19,8 +22,9 @@ interface Member {
   move_2: string;
   move_2_power: number;
   move_2_desc: string;
-  verse: string;
+  verse: string; // Ownself
   image_url: string;
+  isClicked: boolean;
 }
 
 const getColors = (type: string) => {
@@ -73,7 +77,21 @@ const getColors = (type: string) => {
       return [
         "bg-blue-500", 
         "bg-cyan-500", 
-        "bg-gradient-to-br from-blue-900 via-blue-700 to-cyan-900"
+        "bg-gradient-to-br from-cyan-900 via-blue-500 to-cyan-900"
+      ];
+
+    case "electric":
+      return [
+        "bg-gold-600", 
+        "bg-gold-800", 
+        "bg-gradient-to-br from-yellow-800 via-yellow-400 to-yellow-800"
+      ];
+
+    case "normal":
+      return [
+        "bg-stone-700", 
+        "bg-stone-500", 
+        "bg-gradient-to-br from-[#2C2C2C] via-[#66625D] to-[#2C2C2C]"
       ];
 
     default:
@@ -87,16 +105,27 @@ const getColors = (type: string) => {
 
 
 const CardBack = ({person}: {person: Member}) => {
+
+  const [isClicked, setIsClicked] = useState<boolean>(person.isClicked);
+
+  const triggerWiggle = () => {
+    setIsClicked(true)
+    setTimeout(() => setIsClicked(false), 700); // reset after animation
+  };
+
   return (
     <Dialog>
         <DialogTrigger>
-            <div className=" hover:scale-[1.02] cursor-pointer duration-200 bg-[#7e93a5] border-[#1800ad] border-4 rounded-lg flex items-center justify-center aspect-card h-[350px] align-self-center justify-self-center">
-                <div className="tracking-tighter leading-10 text-wrap text-center font-shrikhand text-[#ffde59] font-outline-3 text-[50px] rotate-340 max-w-[200px]">
+            <div className="relative hover:shadow-2xl hover:scale-[1.02] cursor-pointer duration-200 bg-[#7e93a5] border-[#1800ad] border-4 rounded-lg flex items-center justify-center aspect-card h-[350px] align-self-center justify-self-center">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Image src={"/pokeball.png"} alt="Pokeball" height={115} width={115} className="" />
+                </div>
+                <div className={`${person.name.length > 7 && !/\s/.test(person.name) ? "text-[40px]" :  "text-[50px]"} tracking-tighter leading-10 text-wrap text-center font-shrikhand text-[#ffde59] font-outline-2 rotate-340 max-w-[200px]`}>
                     {person.name.toLowerCase()}
                 </div>
             </div>
         </DialogTrigger>
-        <DialogContent className={`${getColors(person.member_type)[2]} border-[#c0c0c0] border-4 rounded-lg w-full animate-gradient-x`}>
+        <DialogContent onClick={triggerWiggle} className={`${getColors(person.member_type)[2]} cursor-pointer ${isClicked ? "rarity-wiggle rarity-sparkle" : ""} duration-200 metallic-card border-[#c0c0c0] border-4 rounded-lg w-full animate-gradient-x`}>
             <div className="w-full max-w-[450px] overflow-hidden flex justify-center items-center">
                 <CardFront person={person}/>
             </div>

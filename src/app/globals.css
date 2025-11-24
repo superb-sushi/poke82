@@ -51,10 +51,10 @@
 
 @layer base {
   .font-outline-2 {
-    -webkit-text-stroke: 2px #1800AD;
+    -webkit-text-stroke: 2.75px #1800AD;
   }
-  .font-outline-3 {
-    -webkit-text-stroke: 3px #1800AD;
+  .font-outline-4 {
+    -webkit-text-stroke: 4px #1800AD;
   }
 }
 
@@ -145,6 +145,34 @@
 }
 
 .animate-gradient-x {
-  animation: gradient-x 5s ease infinite;
+  animation: gradient-x 3.5s ease infinite;
   background-size: 200% 200%; /* needed to see gradient move */
+}
+
+@keyframes rarity-wiggle {
+  0% { transform: rotate(0deg) scale(1); }
+  15% { transform: rotate(-2.5deg) scale(1.05); }
+  30% { transform: rotate(2.5deg) scale(1.10); }
+  45% { transform: rotate(-2deg) scale(1.07); }
+  60% { transform: rotate(2deg) scale(1.05); }
+  75% { transform: rotate(-1deg) scale(1.01); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.rarity-wiggle {
+  animation: rarity-wiggle 0.6s ease-out;
+}
+
+@keyframes rarity-sparkle {
+  0% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.4); }
+  100% { opacity: 0; transform: scale(0.5); }
+}
+
+.rarity-sparkle::after {
+  content: "✨";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  animation: rarity-sparkle 0.7s ease-out;
 }

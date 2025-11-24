@@ -42,6 +42,9 @@ const getColors = (type: string) => {
 
     case "water":
       return ["bg-blue-500", "bg-cyan-500", "bg-blue-900"];
+    
+    case "normal":
+      return ["bg-[#A8A77A]", "bg-[#C9C7B8]", "bg-[#E7E6DF]"];
 
     default:
       // generic fallback: steel-ish
@@ -133,9 +136,9 @@ const CardFront = ({person}: {person: Member}) => {
         <div>
 
         </div>
-        <div className="flex items-center gap-5">
-            <Sparkles stroke="gold" size={30}/>
-            <div className="italic text-white flex text-start">
+        <div className="flex items-center gap-5 w-full">
+            <Sparkles stroke="gold" size={30} className="flex-none"/>
+            <div className="flex-1 italic text-white">
                 {'"' + person.verse + '"'}
             </div>
         </div>
