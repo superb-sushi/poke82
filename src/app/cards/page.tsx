@@ -388,7 +388,7 @@ const CardPage = () => {
 
   return (
     <div className="h-screen grid lg:grid-cols-5 sm:grid-cols-1 items-center w-screen bg-[#2e2927] p-1 relative">
-        <div className="text-[#FFFFFF] bg-[url('/cardsbg.png')] lg:col-span-2 lg:flex hidden bg-contain bg-no-repeat h-full justify-center items-center font-spartan text-[90px] font-bold text-center">
+        <div className="text-[#FFFFFF] bg-[url('/cardsbg.png')] lg:col-span-2 lg:flex hidden bg-contain bg-no-repeat h-full justify-center items-center font-spartan text-[78px] font-bold text-center">
             card collection
         </div>
         <div className="col-span-3 grid lg:grid-cols-3 sm:grid-cols-1 gap-y-4 h-[95%] overflow-y-scroll">
