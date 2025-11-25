@@ -116,7 +116,7 @@ const CardBack = ({person}: {person: Member}) => {
   return (
     <Dialog>
         <DialogTrigger>
-            <div className="relative hover:shadow-2xl hover:scale-[1.02] cursor-pointer duration-200 bg-[#7e93a5] border-[#1800ad] border-4 rounded-lg flex items-center justify-center aspect-card h-[350px] align-self-center justify-self-center">
+            <div className="relative hover:shadow-2xl hover:scale-[1.02] cursor-pointer duration-200 bg-[#7e93a5] border-[#1800ad] border-4 rounded-lg flex items-center justify-center aspect-card h-[300px] align-self-center justify-self-center">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Image src={"/pokeball.png"} alt="Pokeball" height={115} width={115} className="" />
                 </div>
